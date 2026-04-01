@@ -1,0 +1,556 @@
+/* Raiz de variáveis CSS: define cores reutilizáveis */
+:root {
+    /* Cor vermelha usada como destaque (Netflix) */
+    --netflix-red: #E50914;
+    /* Cor de fundo escuro padrão */
+    --dark-bg: #141414;
+    /* Cor padrão do texto */
+    --text-color: #ffffff;
+}
+
+/* Seleciona todos os elementos e normaliza espaçamentos e box-sizing */
+* {
+    margin: 0; /* remove margens padrão */
+    padding: 0; /* remove padding padrão */
+    box-sizing: border-box; /* inclui padding/border no cálculo de largura/altura */
+}
+
+/* Estilos base do documento */
+body {
+    font-family: 'sans-serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* pilha de fontes */
+    background-color: var(--dark-bg); /* aplica fundo escuro */
+    color: var(--text-color); /* aplica cor de texto */
+    overflow-x: hidden; /* evita scroll horizontal indesejado */
+}
+
+/* Links: aparência e transição de cor */
+a {
+    text-decoration: none; /* remove sublinhado */
+    color: #e5e5e5; /* cor padrão do link */
+    transition: color 0.3s; /* suaviza mudança de cor ao hover */
+}
+
+/* Hover em links: suaviza cor */
+a:hover {
+    color: #b3b3b3; /* cor ao passar o mouse */
+}
+
+/* Barra de navegação: fixa no topo e com estilo de layout */
+.navbar {
+    position: fixed; /* permanece fixa no topo */
+    top: 0; /* posicionamento no topo */
+    width: 100%; /* ocupa toda largura da janela */
+    display: flex; /* usa flexbox para distribuir conteúdo */
+    justify-content: space-between; /* espaço entre esquerda e direita */
+    align-items: center; /* alinha verticalmente ao centro */
+    padding: 0 4%; /* padding lateral */
+    height: 70px; /* altura da navbar */
+    z-index: 1000; /* acima de outros elementos */
+    background-color: var(--dark-bg); /* fundo igual ao do site */
+}
+
+/* Agrupa itens à esquerda e direita da navbar */
+.navbar-left,
+.navbar-right {
+    display: flex; /* organiza itens em linha */
+    align-items: center; /* centra verticalmente */
+    gap: 20px; /* espaço entre itens */
+}
+
+/* Logo na navbar: tamanho e espaçamento */
+.logo {
+    width: 92px; /* largura da logo */
+    margin-right: 25px; /* espaçamento à direita */
+    cursor: pointer; /* indica que é clicável */
+}
+
+/* Lista de links da navbar */
+.nav-links {
+    list-style: none; /* remove marcadores */
+    display: flex; /* exibe links em linha */
+    gap: 20px; /* espaço entre links */
+    font-size: 13px; /* tamanho da fonte */
+}
+
+/* Estado ativo do link */
+.nav-links .active {
+    font-weight: bold; /* destaca com negrito */
+    color: white; /* cor diferente para ativo */
+}
+
+/* Ícones na navbar */
+.icon {
+    font-size: 20px; /* tamanho do ícone */
+    cursor: pointer; /* indica interatividade */
+}
+
+/* Link para área infantil (estilização mais proeminente) */
+.kids-link {
+    font-size: 14px; /* ligeiramente maior */
+}
+
+/* Contêiner de notificação na navbar */
+.nav-notification {
+    position: relative; /* para posicionar badge absoluto */
+    cursor: pointer; /* clicável */
+}
+
+/* Badge de notificação: pequeno círculo com número */
+.notification-badge {
+    position: absolute; /* posicionado relativo ao contêiner */
+    top: -5px; /* deslocamento vertical */
+    right: -8px; /* deslocamento horizontal */
+    background-color: var(--netflix-red); /* cor de destaque */
+    color: white; /* texto branco */
+    font-size: 10px; /* texto pequeno */
+    font-weight: bold; /* número em negrito */
+    border-radius: 50%; /* formato circular */
+    width: 16px; /* largura do badge */
+    height: 16px; /* altura do badge */
+    display: flex; /* flex para centralizar conteúdo */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+}
+
+/* Menu do perfil (avatar + opções) */
+.profile-menu {
+    display: flex; /* itens em linha */
+    align-items: center; /* alinhamento vertical */
+    gap: 5px; /* pequeno espaçamento */
+    cursor: pointer; /* interativo */
+}
+
+/* Ícone do perfil com tamanho e borda sutil */
+.profile-icon {
+    width: 40px; /* largura do avatar */
+    height: 30px; /* altura do avatar */
+    border-radius: 2px; /* cantos levemente arredondados */
+}
+
+/* Contêiner principal dos sliders (filmes em carrossel) */
+.sliders-container {
+    padding: 0 4%; /* padding lateral para alinhar com navbar */
+    padding-top: 100px; /* espaçamento superior para navbar fixa */
+    /* Space for navbar */
+    position: relative; /* para z-index funcionar */
+    z-index: 3; /* acima de conteúdo de fundo */
+    padding-bottom: 100px; /* espaço inferior para modais expandidos */
+}
+
+/* Cada seção de slider tem margem inferior responsiva */
+.slider-section {
+    margin-bottom: 3.5vw; /* usa unidade viewport para escalabilidade */
+}
+
+/* Cabeçalho do slider: título e indicadores */
+.slider-header {
+    display: flex; /* organiza título e indicadores */
+    justify-content: space-between; /* espaça entre elementos */
+    align-items: flex-end; /* alinha a base dos elementos */
+    margin-bottom: 12px; /* espaçamento abaixo */
+}
+
+/* Título do slider com tamanho relativo à viewport */
+.slider-title {
+    font-size: 1.25vw; /* escala com a largura da viewport */
+    font-weight: bold; /* negrito */
+    color: #e5e5e5; /* cor suave para o título */
+    line-height: 1.25vw; /* linha igual ao tamanho para alinhamento */
+}
+
+/* Indicadores do slider (pequenas barras) */
+.slider-indicators {
+    display: flex; /* em linha */
+    gap: 2px; /* pequeno espaçamento */
+    margin-bottom: 4px; /* espaçamento abaixo */
+}
+
+/* Estilo das pequenas barras indicadores */
+.slider-indicators div {
+    width: 12px; /* largura da barra */
+    height: 2px; /* altura da barra */
+    background-color: #4d4d4d; /* cor inativa */
+}
+
+/* Indicador ativo com cor mais clara */
+.slider-indicators div.active {
+    background-color: #aaa; /* cor para o indicador ativo */
+}
+
+/* Linha de filmes: container horizontal com scroll implícito */
+.movie-row {
+    display: flex; /* exibe cards em linha */
+    gap: 8px; /* espaço entre cards */
+    /* Small gap between movie cards */
+    overflow-x: visible; /* permite que elementos expandidos saiam visualmente */
+    /* Let the expanded cards paint outside this box vertically */
+    padding: 10px 4% 50px 4%; /* padding superior e inferior extra */
+    /* Added bottom padding to hold the expanding modal */
+    margin: 0 -4%; /* puxa bordas para compensar padding do container */
+    /* Pull edges back out so we don't double up padding from container */
+    scroll-behavior: smooth; /* scroll suave ao navegar */
+    -ms-overflow-style: none; /* esconde scroll no IE/Edge antigo */
+    scrollbar-width: none; /* esconde scroll em Firefox */
+}
+
+/* Remove barra de rolagem no WebKit */
+.movie-row::-webkit-scrollbar {
+    display: none; /* oculta scrollbar */
+}
+
+/* Cartão individual do filme */
+.movie-card {
+    min-width: 250px; /* largura mínima do cartão */
+    width: 250px; /* largura padrão */
+    height: 140px; /* altura padrão */
+    background-color: #222; /* fundo do cartão */
+    border-radius: 4px; /* cantos arredondados */
+    cursor: pointer; /* indica que é clicável */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s, border-radius 0.3s 0s, z-index 0s 0.3s, box-shadow 0.3s 0s; /* transições compostas */
+    position: relative; /* para posicionar elementos internos */
+    z-index: 1; /* contexto de empilhamento inicial */
+    transform-origin: center center; /* origem padrão para transformações */
+    /* Default origin */
+}
+
+/* Modificador aplicado via JS para alterar origem quando o card está próximo da borda esquerda */
+.movie-card.origin-left {
+    transform-origin: left center; /* origem à esquerda */
+}
+
+/* Modificador aplicado via JS para alterar origem quando o card está próximo da borda direita */
+.movie-card.origin-right {
+    transform-origin: right center; /* origem à direita */
+}
+
+/* Hover no cartão: escala e destaca com sombra */
+.movie-card:hover {
+    transform: scale(1.6) translateY(-5%); /* amplia e eleva levemente */
+    /* Reduced vertical translation since container has more padding */
+    z-index: 99; /* traz para frente */
+    border-radius: 6px; /* borda ligeiramente mais arredondada */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9); /* sombra forte */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s, border-radius 0.3s 0.6s, box-shadow 0.3s 0.6s, z-index 0s 0s; /* transições com delay */
+}
+
+/* Imagem do cartão (poster) posicionada absolutamente dentro do cartão */
+.movie-card img {
+    position: absolute; /* cobre todo o cartão */
+    top: 0; /* topo */
+    left: 0; /* esquerda */
+    width: 100%; /* ocupa largura do cartão */
+    height: 100%; /* ocupa altura do cartão */
+    object-fit: cover; /* cobre sem distorcer */
+    border-radius: 4px; /* mesma borda do cartão */
+    transition: opacity 0.3s ease, border-radius 0.3s; /* transições para efeitos */
+    z-index: 2; /* acima do fundo do cartão */
+}
+
+/* iframe de pré-visualização (vídeo) dentro do cartão */
+.movie-card iframe {
+    position: absolute; /* sobrepõe a imagem */
+    top: 0; /* topo */
+    left: 0; /* esquerda */
+    width: 100%; /* ocupa todo o cartão */
+    height: 100%; /* ocupa todo o cartão */
+    opacity: 0; /* inicialmente invisível */
+    border-radius: 4px; /* borda igual à imagem */
+    transition: opacity 0.3s ease, border-radius 0.3s; /* transições */
+    pointer-events: none; /* não captura cliques quando invisível */
+    z-index: 1; /* abaixo da imagem por padrão */
+}
+
+/* Quando o iframe está tocando (playing), torna-se visível */
+.movie-card iframe.playing {
+    opacity: 1; /* torna visível */
+    z-index: 3; /* acima da imagem */
+    border-radius: 6px 6px 0 0; /* canto superior arredondado */
+}
+
+/* Quando o cartão é hover, ajusta a borda da imagem para combinar */
+.movie-card:hover img {
+    border-radius: 6px 6px 0 0; /* arredonda cantos superiores */
+    transition: border-radius 0s 0.6s; /* sincroniza com transição de hover */
+}
+
+/* Classe que esconde a imagem quando um vídeo está tocando */
+.movie-card img.playing-video {
+    opacity: 0; /* imagem invisível */
+}
+
+/* Modal com detalhes do cartão que aparece abaixo do poster quando em hover */
+.card-details {
+    position: absolute; /* posicionado em relação ao cartão */
+    top: 100%; /* imediatamente abaixo do cartão */
+    left: 0; /* alinhado à esquerda do cartão */
+    width: 100%; /* ocupa a largura do cartão */
+    background-color: #181818; /* fundo escuro para os detalhes */
+    border-bottom-left-radius: 6px; /* arredonda canto inferior esquerdo */
+    border-bottom-right-radius: 6px; /* arredonda canto inferior direito */
+    padding: 18px 16px; /* espaçamento interno */
+    opacity: 0; /* inicialmente invisível */
+    visibility: hidden; /* impede foco/tabulação */
+    transition: opacity 0.3s 0s, visibility 0.3s 0s; /* transição de aparecimento */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9); /* sombra profunda */
+    display: flex; /* layout em coluna */
+    flex-direction: column; /* empilha conteúdos */
+    gap: 12px; /* espaçamento entre linhas */
+    z-index: 2; /* acima do cartão base */
+    cursor: default; /* não é clicável por padrão */
+}
+
+/* Ao hover no cartão, o modal de detalhes aparece */
+.movie-card:hover .card-details {
+    opacity: 1; /* torna visível */
+    visibility: visible; /* permite foco */
+    transition: opacity 0.2s 0.6s, visibility 0s 0.6s; /* transição com delay para sincronizar */
+}
+
+/* Contêiner dos botões dentro dos detalhes */
+.details-buttons {
+    display: flex; /* alinha botões em linha */
+    justify-content: space-between; /* separa esquerda/direita */
+    align-items: center; /* centraliza verticalmente */
+}
+
+/* Agrupa botões à esquerda e à direita */
+.left-buttons,
+.right-buttons {
+    display: flex; /* itens em linha */
+    gap: 8px; /* espaçamento entre botões */
+}
+
+/* Botões circulares com borda e fundo escuro */
+.btn-icon {
+    width: 32px; /* largura do botão */
+    height: 32px; /* altura do botão */
+    border-radius: 50%; /* formato circular */
+    background-color: #2b2b2b; /* fundo escuro */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* borda semi-transparente */
+    color: white; /* ícone em branco */
+    display: flex; /* centraliza conteúdo */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+    cursor: pointer; /* interativo */
+    font-size: 14px; /* tamanho do ícone/texto */
+    transition: border-color 0.2s, background-color 0.2s; /* transições suaves */
+}
+
+/* Hover no botão: destaca borda e fundo */
+.btn-icon:hover {
+    border-color: white; /* borda branca */
+    background-color: rgba(255, 255, 255, 0.2); /* leve brilho */
+}
+
+/* Botão de play com estilo invertido */
+.btn-play-icon {
+    background-color: white; /* fundo branco */
+    color: black; /* ícone preto */
+    border: none; /* sem borda */
+}
+
+/* Hover no play: muda tom do fundo */
+.btn-play-icon:hover {
+    background-color: #e6e6e6; /* tom mais claro */
+}
+
+/* Pequeno ajuste no ícone interno do botão play */
+.btn-play-icon i {
+    margin-left: 2px; /* deslocamento para centralizar visualmente */
+}
+
+/* Informação adicional em linha (pontuação, duração etc.) */
+.details-info {
+    display: flex; /* itens em linha */
+    align-items: center; /* centra verticalmente */
+    gap: 8px; /* espaçamento entre itens */
+    font-size: 11px; /* pequeno */
+    font-weight: bold; /* negrito */
+}
+
+/* Pontuação de compatibilidade/Match em verde */
+.match-score {
+    color: #46d369; /* verde para indicar aprovação */
+}
+
+/* Badge de idade com borda */
+.age-badge {
+    background-color: transparent; /* transparente por padrão */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* borda sutil */
+    color: white; /* texto branco */
+    padding: 1px 3px; /* pequeno espaçamento interno */
+    border-radius: 2px; /* cantos levemente arredondados */
+    font-family: Arial, sans-serif; /* fonte alternativa */
+}
+
+/* Variante vermelha para destaque de idade */
+.age-badge.red-accent {
+    background-color: #d32f2f; /* fundo vermelho */
+    border: none; /* remove borda */
+    font-weight: bold; /* destaca texto */
+}
+
+/* Indicador de resolução (HD, 4K) */
+.resolution {
+    border: 1px solid rgba(255, 255, 255, 0.4); /* borda sutil */
+    padding: 1px 3px; /* espaçamento */
+    border-radius: 2px; /* cantos arredondados */
+    color: rgba(255, 255, 255, 0.9); /* cor do texto */
+}
+
+/* Duração do conteúdo */
+.duration {
+    color: rgba(255, 255, 255, 0.9); /* cor levemente translúcida */
+}
+
+/* Tags/descritores do conteúdo */
+.details-tags {
+    display: flex; /* itens em linha */
+    gap: 6px; /* espaçamento */
+    font-size: 11px; /* pequeno */
+    color: rgba(255, 255, 255, 0.9); /* cor do texto */
+    margin-top: 4px; /* espaçamento superior */
+}
+
+/* Separa tags com um ponto, exceto a última */
+.details-tags span:not(:last-child)::after {
+    content: "•"; /* bullet entre tags */
+    color: #666; /* cor do bullet */
+    margin-left: 6px; /* espaço antes do próximo item */
+}
+
+/* Badge de Top10 posicionado no canto do cartão */
+.badge-top10 {
+    position: absolute; /* posicionado em relação ao cartão */
+    top: 0; /* canto superior */
+    right: 0; /* canto direito */
+    width: 22px; /* largura do badge */
+    height: 28px; /* altura do badge */
+    background-color: var(--netflix-red); /* cor vermelha */
+    color: white; /* texto branco */
+    display: flex; /* flex para alinhar texto */
+    flex-direction: column; /* número embaixo do texto top */
+    justify-content: center; /* centraliza verticalmente */
+    align-items: center; /* centraliza horizontalmente */
+    font-weight: bold; /* destaca */
+    z-index: 4; /* acima de outros elementos */
+    border-bottom-left-radius: 2px; /* arredonda canto inferior esquerdo */
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra sutil */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* fonte limpa */
+}
+
+/* Texto pequeno 'TOP' no badge */
+.badge-top10 span.top {
+    font-size: 7px; /* muito pequeno */
+    letter-spacing: 0.5px; /* espaçamento entre letras */
+    line-height: 8px; /* altura de linha compacta */
+}
+
+/* Número do ranking no badge */
+.badge-top10 span.number {
+    font-size: 13px; /* tamanho do número */
+    line-height: 13px; /* alinhamento vertical */
+}
+
+.badge-bottom {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 4px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 2px;
+    z-index: 4;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.movie-card.has-progress .badge-bottom {
+    bottom: 12px;
+}
+
+.badge-bottom.red {
+    background-color: var(--netflix-red);
+    color: white;
+}
+
+.badge-bottom.white {
+    background-color: white;
+    color: black;
+}
+
+/* Progress bar */
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(100, 100, 100, 0.7);
+    z-index: 5;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: var(--netflix-red);
+    border-bottom-left-radius: 4px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .movie-card {
+        min-width: 200px;
+        width: 200px;
+        height: 112px;
+    }
+
+    .slider-title {
+        font-size: 4vw;
+        line-height: 4.5vw;
+    }
+}
+
+/* Footer */
+footer {
+    padding: 0 4%;
+    color: #737373;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.footer-content {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+}
+
+.footer-links a {
+    color: #737373;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

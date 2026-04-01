@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class = "trilho" id="trilho">
+        <div class="indicador"></div>
+    </div>
+
+    <script src="botao.js"></script>
+
+    <main>
+        
+
+        <header class="site-header">
+            <img src="assets/pngwing.com.png" alt="Netflix" class="site-logo">
+            <h1>Quem está assistindo?</h1>
+        </header>
+
+        <section aria-label="Perfis disponíveis">
+            <nav class="profiles">
+                <ul>
+
+                    <!-- Maria -->
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" onclick="selectProfile('Maria')">
+                            <figure>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Perfil Maria">
+                                <figcaption>Maria</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <!-- João -->
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" onclick="selectProfile('João')">
+                            <figure>
+                                <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg" alt="Perfil João">
+                                <figcaption>João</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <!-- Luiza -->
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile" onclick="selectProfile('Luiza')">
+                            <figure>
+                                <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg" alt="Perfil Luiza">
+                                <figcaption>Luiza</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <!-- Adicionar -->
+                    <li>
+                        <a href="catalogo/catalogo.html" class="profile">
+                            <figure>
+                                <img src="assets/Adicionar-perfil.svg" alt="Adicionar perfil">
+                                <figcaption>Adicionar Perfil</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </section>
+
+        <section class="gerenciar">
+            <button type="button" class="botao-gerenciar">Gerenciar perfis</button>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="theme.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>
